@@ -1,5 +1,8 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
+import Highlight from '../Components/Highlight';
+import RoomsSection from '../Components/RoomsSection';
 import './LandingPage.css';
 
 const LandingPage = () => {
@@ -12,6 +15,9 @@ const LandingPage = () => {
           <p>Discover your perfect getaway from thousands of handpicked hotels.</p>
         </div>
       </div>
+      <Highlight />
+      <RoomsSection />
+      <Footer />
     </>
   );
 };
