@@ -4,12 +4,42 @@
     text-align: center;
   }
   
+  .section-subtext {
+    color: #888;
+    margin-top: -1rem;
+    font-size: 0.9rem;
+  }
+  
+  .rooms-slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .arrow-button {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .arrow-button:hover {
+    background-color: #f05394;
+    color: white;
+  }
+  
+  .arrow-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
   .room-cards {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     gap: 2rem;
-    margin-top: 2rem;
   }
   
   .room-card {
@@ -19,6 +49,7 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     padding: 1.5rem;
     text-align: left;
+    transition: transform 0.3s ease;
   }
   
   .room-card img {
