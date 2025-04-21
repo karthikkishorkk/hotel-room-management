@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
-import Highlight from '../Components/Highlight';
-import RoomsSection from '../Components/RoomsSection';
+import Navbar from '../../Components/Navbar';
+import Footer from '../../Components/Footer';
+import Highlight from '../../Components/Highlight';
+import RoomsSection from '../../Components/RoomsSection';
 import './LandingPage.css';
 
 const LandingPage = () => {

@@ -1,5 +1,5 @@
 .hero-section {
-  background-image: url('../assets/landingImage.jpg');
+  background-image: url('../../assets/landingImage.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;
