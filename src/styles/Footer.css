@@ -7,7 +7,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   font-family: 'Poppins', sans-serif;
-  gap: 2rem; /* Optional: Adds spacing between columns */
+  gap: 2rem;
 }
 
 .footer > div {
