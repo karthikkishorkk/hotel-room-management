@@ -9,15 +9,16 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-logo">Booking</div>
 
-      <ul className="navbar-links">
-        <li>Home</li>
-        <li>Rooms</li>
-        <li>Booking</li>
-        <li>Occupancy</li>
-        <li onClick={() => navigate('/login')}>Login</li>
-      </ul>
-
-      <button className="book-now-btn">Book Now</button>
+      <div className="navbar-center">
+        <ul className="navbar-links">
+          <li>Home</li>
+          <li>Rooms</li>
+          <li>Booking</li>
+          <li>Occupancy</li>
+          <li onClick={() => navigate('/login')}>Login</li>
+        </ul>
+        <button className="book-now-btn">Book Now</button>
+      </div>
     </nav>
   );
 };
