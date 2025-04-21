@@ -1,0 +1,38 @@
+.highlight-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+  
+.highlight-section img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+}
+  
+.highlight-content {
+    max-width: 500px;
+}
+  
+.highlight-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+  
+.highlight-content p {
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+  
+.highlight-content button {
+    background-color: #f05394;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+  
