@@ -18,7 +18,7 @@ const RoomsSection = () => {
       description: 'Classic style and comfort with a touch of elegance.',
     },
     {
-      type: 'DUPLEX ROOM',
+      type: 'Duplex Room',
       price: '$80',
       img: duplexRoom,
       description: 'A spacious duplex with separate living and sleeping areas.',

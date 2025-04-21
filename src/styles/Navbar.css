@@ -35,10 +35,10 @@
 }
 
 .navbar-links li:hover {
-  color: #ff3399;
+  color: #ff3399; /* Only applies to nav links */
 }
 
-.book-now-btn {
+.navbar .book-now-btn {
   padding: 0.5rem 1.2rem;
   background-color: #ff3399;
   color: white;
@@ -49,6 +49,6 @@
   transition: background-color 0.3s ease;
 }
 
-.book-now-btn:hover {
+.navbar .book-now-btn:hover {
   background-color: #e60073;
 }

@@ -19,23 +19,31 @@
   }
   
   .arrow-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 50%;
-    padding: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+    color: black;
+    font-size: 1.2rem;
   }
   
   .arrow-button:hover {
     background-color: #f05394;
     color: white;
+    box-shadow: 0 0 8px rgba(240, 83, 148, 0.4);
   }
   
   .arrow-button:disabled {
     opacity: 0.4;
     cursor: not-allowed;
   }
+  
   
   .room-cards {
     display: flex;
