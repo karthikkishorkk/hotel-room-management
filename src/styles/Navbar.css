@@ -1,0 +1,50 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 4rem;
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-logo {
+  font-size: 30px;
+  font-weight: 600;
+  color: #111;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar-links li:hover {
+  color: #f05394;
+}
+
+.book-now-btn {
+  background-color: #f05394;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.book-now-btn:hover {
+  background-color: #d8437f;
+}

@@ -1,0 +1,33 @@
+.hero-section {
+  background-image: url('../assets/landingImage.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-section .overlay {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  text-align: center;
+  border-radius: 12px;
+  color: white;
+}
+
+.hero-section .overlay h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.hero-section .overlay h1 span {
+  color: #f05394;
+}
+
+.hero-section .overlay p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
