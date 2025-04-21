@@ -1,41 +1,40 @@
 .footer {
-    background-color: #111;
-    color: white;
-    padding: 2rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    font-family: 'Poppins', sans-serif;
+  background-color: #111;
+  color: white;
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  font-family: 'Poppins', sans-serif;
+  gap: 2rem; /* Optional: Adds spacing between columns */
 }
-  
-.footer-section {
-    flex: 1;
-    min-width: 200px;
-    margin-bottom: 1.5rem;
-}
-  
-.footer h4 {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    color: #fff;
-}
-  
-.footer p {
-    margin: 6px 0;
-    color: #bbb;
-    transition: color 0.3s ease;
-    cursor: default;
-}
-  
-.footer p:hover {
-    color: #E82574;
 
+.footer > div {
+  flex: 1;
+  min-width: 200px;
 }
-  
+
 .footer-logo {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 0.8rem;
-    color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: white;
 }
-  
+
+.footer h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.footer p {
+  margin: 6px 0;
+  color: #bbb;
+  transition: color 0.3s ease;
+  cursor: default;
+}
+
+.footer p:hover {
+  color: #f05394;
+}
