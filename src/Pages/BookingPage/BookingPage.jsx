@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './BookingPage.css';
 
 const roomTypes = [
@@ -47,9 +48,33 @@ const BookingPage = () => {
     setFormData((prev) => ({ ...prev, childrenAges: updatedAges }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Booking Submitted:', formData);    
+    console.log("Booking Form Data:", formData);
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/bookings', formData);
+      if (response.status === 201 || response.status === 200) {
+        console.log('✅ Booking submitted successfully');
+
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          altPhone: '',
+          guests: 2,
+          children: 0,
+          checkIn: '',
+          checkOut: '',
+          room: '',
+          childrenAges: [],
+        });
+      }
+    } catch (error) {
+      console.error('❌ Error submitting booking:', error);
+    }
   };
 
   return (
@@ -133,19 +158,19 @@ const BookingPage = () => {
           />
         </div>
         <div className="form-row">
-            <select
-                name="room"
-                value={formData.room}
-                onChange={handleChange}
-                required
-            >
-            <option value="" disabled>Select a Room</option>
-                {roomTypes.map((room) => (
-                    <option key={room.type} value={room.type}>
-                    {room.type} - {room.price}
-                    </option>
-                ))}
-            </select>
+          <select
+            name="room"
+            value={formData.room}
+            onChange={handleChange}
+            required
+          >
+            <option value="" disabled hidden>Select a Room</option>
+            {roomTypes.map((room) => (
+              <option key={room.type} value={room.type}>
+                {room.type} - {room.price}
+              </option>
+            ))}
+          </select>
 
         </div>
         <button type="submit" className="submit-btn">Submit Booking</button>
