@@ -5,10 +5,8 @@ import LoginPage from './Pages/LoginPage/LoginPage';
 import BookingPage from './Pages/BookingPage/BookingPage';
 import BookingDetailsPage from './Pages/BookingDetailsPage/BookingDetailsPage';
 import AvailableRoomsPage from './Pages/AvailableRoomsPage/AvailableRoomsPage';
-
-
-
-
+import AdminDashboard from './Pages/AdminDashboard/AdminDashboard';
+import RoomCalendarPage from './Pages/RoomCalendarPage/RoomCalendarPage';
 
 function App() {
   return (
@@ -18,7 +16,10 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/booking" element={<BookingPage />} />
         <Route path="/booking-details" element={<BookingDetailsPage />} />
-        <Route path="/rooms" element={<AvailableRoomsPage />} />
+        <Route path="/available-rooms" element={<AvailableRoomsPage />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/room-calendar" element={<RoomCalendarPage />} />
+
       </Routes>
     </Router>
   );
