@@ -1,0 +1,21 @@
+.available-rooms-page {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .room-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  
+  .room-card {
+    border: 1px solid #ccc;
+    padding: 1.5rem;
+    width: 250px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  

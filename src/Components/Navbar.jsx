@@ -17,7 +17,10 @@ const Navbar = () => {
           <li>Occupancy</li>
           <li onClick={() => navigate('/login')}>Login</li>
         </ul>
-        <button className="book-now-btn" onClick={() => navigate('/booking')}>Book Now</button>
+        <button className="book-now-btn" onClick={() => navigate('/available-rooms')}>
+          View Available Rooms
+        </button>
+
       </div>
     </nav>
   );
