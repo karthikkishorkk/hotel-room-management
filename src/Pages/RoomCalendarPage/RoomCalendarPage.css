@@ -1,0 +1,44 @@
+.room-calendar-container {
+    padding: 40px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f8fa;
+    min-height: 100vh;
+  }
+  
+  .room-calendar-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  .room-select {
+    margin-bottom: 30px;
+  }
+  
+  .MuiPickersStaticWrapper-root {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 16px;
+  }
+  
+  /* You can add custom date coloring with conditional classnames later */
+  .custom-day-booked {
+    background-color: #f44336 !important;
+    color: white !important;
+    border-radius: 50%;
+  }
+  
+  .custom-day-available {
+    background-color: #4caf50 !important;
+    color: white !important;
+    border-radius: 50%;
+  }
+  
+  .custom-day-maintenance {
+    background-color: #ffc107 !important;
+    color: black !important;
+    border-radius: 50%;
+  }
+  
