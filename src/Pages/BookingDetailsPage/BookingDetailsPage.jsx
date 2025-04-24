@@ -13,7 +13,7 @@ const BookingDetailsPage = () => {
     const fetchBookings = async () => {
       try {
         const res = await axios.get('http://localhost:5000/api/bookings');
-        setBookings(res.data.data); 
+        setBookings(res.data.data);
       } catch (err) {
         console.error('Failed to fetch bookings:', err);
       }
@@ -24,6 +24,11 @@ const BookingDetailsPage = () => {
 
   const handleNewBooking = () => {
     navigate('/booking');
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Adjust key if your token is stored differently
+    navigate('/login');
   };
 
   const filteredBookings = bookings.filter((booking) => {
@@ -38,9 +43,14 @@ const BookingDetailsPage = () => {
     <div className="booking-details-container">
       <div className="booking-header">
         <h2>Bookings</h2>
-        <button className="new-booking-btn" onClick={handleNewBooking}>
-          New Booking
-        </button>
+        <div className="booking-header-buttons">
+          <button className="new-booking-btn" onClick={handleNewBooking}>
+            New Booking
+          </button>
+          <button className="logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       </div>
 
       <div className="booking-filters">
@@ -81,7 +91,7 @@ const BookingDetailsPage = () => {
             <tr key={index}>
               <td className="last-name">{booking.lastName}</td>
               <td>{booking.firstName}</td>
-              <td>{booking.room}</td>
+              <td>{booking.room.roomType}</td>
               <td>{new Date(booking.checkIn).toLocaleDateString()}</td>
               <td>{new Date(booking.checkOut).toLocaleDateString()}</td>
               <td>{booking.status}</td>

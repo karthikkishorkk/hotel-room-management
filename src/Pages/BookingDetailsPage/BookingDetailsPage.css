@@ -1,83 +1,110 @@
 .booking-details-container {
-    padding: 20px;
-    background-color: #f5f8fa;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .booking-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .booking-header h2 {
-    font-size: 24px;
-    font-weight: 600;
-  }
-  
-  .new-booking-btn {
-    background-color: transparent;
-    color: #cfa15d;
-    border: none;
-    font-size: 14px;
-    cursor: pointer;
-    width: 150px;
-  }
-  
-  .booking-filters {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .booking-filters input,
-  .booking-filters select {
-    padding: 8px 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    flex: 1;
-  }
-  
-  .booking-filters .search-btn {
-    background-color: #cfa15d;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    font-weight: 500;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 200px;
-  }
-  
-  .booking-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  
-  .booking-table thead {
-    background-color: #f0f2f5;
-    font-weight: 600;
-  }
-  
-  .booking-table th,
-  .booking-table td {
-    text-align: left;
-    padding: 12px 16px;
-    font-size: 14px;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  .booking-table tbody tr:hover {
-    background-color: #f9f9f9;
-  }
-  
-  .booking-table .last-name {
-    color: #cfa15d;
-    font-weight: 500;
-  }
-  
+  padding: 20px;
+  background-color: #f5f8fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.booking-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.booking-header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.new-booking-btn {
+  background-color: transparent;
+  color: #cfa15d;
+  border: 1px solid #cfa15d;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.new-booking-btn:hover {
+  background-color: #cfa15d;
+  color: white;
+}
+
+.logout-btn {
+  background-color: transparent;
+  color: #d9534f;
+  border: 1px solid #d9534f;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #d9534f;
+  color: white;
+}
+
+.booking-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.booking-filters input,
+.booking-filters select {
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.booking-filters .search-btn {
+  background-color: #cfa15d;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 200px;
+}
+
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.booking-table thead {
+  background-color: #f0f2f5;
+  font-weight: 600;
+}
+
+.booking-table th,
+.booking-table td {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.booking-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.booking-table .last-name {
+  color: #cfa15d;
+  font-weight: 500;
+}

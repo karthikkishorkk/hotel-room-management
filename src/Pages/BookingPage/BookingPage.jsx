@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './BookingPage.css';
 
-const roomTypes = [
-  { type: 'Standard', price: '$60' },
-  { type: 'Classic', price: '$70' },
-  { type: 'Duplex Room', price: '$80' },
-  { type: 'Double Room', price: '$90' },
-  { type: 'Queens Suite', price: '$110' },
-  { type: 'Presidential Suite', price: '$150' },
-  { type: 'Penthouse', price: '$200' },
-];
+// const roomTypes = [
+//   { type: 'Standard', price: '$60' },
+//   { type: 'Classic', price: '$70' },
+//   { type: 'Duplex Room', price: '$80' },
+//   { type: 'Double Room', price: '$90' },
+//   { type: 'Queens Suite', price: '$110' },
+//   { type: 'Presidential Suite', price: '$150' },
+//   { type: 'Penthouse', price: '$200' },
+// ];
 
 const BookingPage = () => {
+  const navigate = useNavigate();
+  const [rooms, setRooms] = useState([]);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -26,6 +29,20 @@ const BookingPage = () => {
     room: '',
     childrenAges: [],
   });
+
+  useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/rooms');
+        setRooms(response.data);
+        console.log(response.data, "Response");
+      } catch (error) {
+        console.error('❌ Error fetching rooms:', error);
+      }
+    };
+
+    fetchRooms();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -71,6 +88,9 @@ const BookingPage = () => {
           room: '',
           childrenAges: [],
         });
+
+        // Redirect to BookingDetailsPage
+        navigate('/booking-details');
       }
     } catch (error) {
       console.error('❌ Error submitting booking:', error);
@@ -145,10 +165,10 @@ const BookingPage = () => {
 
         <div className="form-row">
           <input
-            type="date" name="checkIn" 
+            type="date" name="checkIn"
             value={formData.checkIn}
-            onChange={handleChange}  
-            required          
+            onChange={handleChange}
+            required
           />
           <input
             type="date" name="checkOut"
@@ -165,13 +185,12 @@ const BookingPage = () => {
             required
           >
             <option value="" disabled hidden>Select a Room</option>
-            {roomTypes.map((room) => (
-              <option key={room.type} value={room.type}>
-                {room.type} - {room.price}
+            {rooms.map((room) => (
+              <option key={room._id} value={room._id}>
+                {room.roomType} (Room #{room.roomNumber})
               </option>
             ))}
           </select>
-
         </div>
         <button type="submit" className="submit-btn">Submit Booking</button>
       </form>
