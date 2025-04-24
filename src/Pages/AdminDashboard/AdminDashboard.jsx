@@ -21,6 +21,7 @@ const AdminDashboard = () => {
         <button onClick={() => navigate('/admin/manage-rooms')}>Manage Rooms</button>
         <button onClick={() => navigate('/admin/manage-staff')}>Manage Staff</button>
         <button onClick={() => navigate('/admin/room-availability')}>Room Availability</button>
+        <button onClick={() => navigate('/room-calendar')}>Room Calendar</button>
       </div>
     </div>
   );
