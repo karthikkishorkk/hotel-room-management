@@ -27,8 +27,25 @@ const BookingDetailsPage = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Adjust key if your token is stored differently
+    localStorage.removeItem('token');
     navigate('/login');
+  };
+
+  const handleStatusChange = async (bookingId, newStatus) => {
+    try {
+      const res = await axios.patch(`http://localhost:5000/api/bookings/${bookingId}`, {
+        status: newStatus,
+      });
+      // Update the local state to reflect the new status
+      setBookings((prevBookings) =>
+        prevBookings.map((b) =>
+          b._id === bookingId ? { ...b, status: newStatus } : b
+        )
+      );
+      console.log('Status updated:', res.data);
+    } catch (error) {
+      console.error('Failed to update status:', error);
+    }
   };
 
   const filteredBookings = bookings.filter((booking) => {
@@ -66,10 +83,11 @@ const BookingDetailsPage = () => {
           onChange={(e) => setStatusFilter(e.target.value)}
         >
           <option value="">- Any Status -</option>
+          <option value="Confirmed">Confirmed</option>
           <option value="CheckedIn">CheckedIn</option>
           <option value="CheckedOut">CheckedOut</option>
           <option value="Booked">Booked</option>
-          <option value="Canceled">Canceled</option>
+          <option value="Cancelled">Cancelled</option>
         </select>
 
         <button className="search-btn">Search</button>
@@ -87,14 +105,27 @@ const BookingDetailsPage = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredBookings.map((booking, index) => (
-            <tr key={index}>
+          {filteredBookings.map((booking) => (
+            <tr key={booking._id}>
               <td className="last-name">{booking.lastName}</td>
               <td>{booking.firstName}</td>
-              <td>{booking.room.roomType}</td>
+              <td>{booking.room?.roomType || 'N/A'}</td>
               <td>{new Date(booking.checkIn).toLocaleDateString()}</td>
               <td>{new Date(booking.checkOut).toLocaleDateString()}</td>
-              <td>{booking.status}</td>
+              <td>
+                <select
+                  value={booking.status}
+                  onChange={(e) =>
+                    handleStatusChange(booking._id, e.target.value)
+                  }
+                >
+                  <option value="Confirmed">Confirmed</option>
+                  <option value="CheckedIn">CheckedIn</option>
+                  <option value="CheckedOut">CheckedOut</option>
+                  <option value="Booked">Booked</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+              </td>
             </tr>
           ))}
         </tbody>
