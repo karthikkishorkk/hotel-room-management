@@ -16,6 +16,7 @@ import './BookingPage.css';
 const BookingPage = () => {
   const navigate = useNavigate();
   const [rooms, setRooms] = useState([]);
+  const [selectedRoomType, setSelectedRoomType] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -43,6 +44,10 @@ const BookingPage = () => {
 
     fetchRooms();
   }, []);
+
+  const uniqueRoomTypes = [...new Set(rooms.map(room => room.roomType))];
+
+  const filteredRooms = rooms.filter(room => room.roomType === selectedRoomType);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -88,6 +93,7 @@ const BookingPage = () => {
           room: '',
           childrenAges: [],
         });
+        setSelectedRoomType('');
 
         // Redirect to BookingDetailsPage
         navigate('/booking-details');
@@ -177,21 +183,44 @@ const BookingPage = () => {
             required
           />
         </div>
+
+        {/* Room Type Dropdown */}
         <div className="form-row">
           <select
-            name="room"
-            value={formData.room}
-            onChange={handleChange}
+            name="roomType"
+            value={selectedRoomType}
+            onChange={(e) => {
+              setSelectedRoomType(e.target.value);
+              setFormData((prev) => ({ ...prev, room: '' }));
+            }}
             required
           >
-            <option value="" disabled hidden>Select a Room</option>
-            {rooms.map((room) => (
-              <option key={room._id} value={room._id}>
-                {room.roomType} (Room #{room.roomNumber})
-              </option>
+            <option value="" disabled hidden>Select Room Type</option>
+            {uniqueRoomTypes.map((type) => (
+              <option key={type} value={type}>{type}</option>
             ))}
           </select>
         </div>
+
+        {/* Room Dropdown - based on selected type */}
+        {selectedRoomType && (
+          <div className="form-row">
+            <select
+              name="room"
+              value={formData.room}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled hidden>Select a Room</option>
+              {filteredRooms.map((room) => (
+                <option key={room._id} value={room._id}>
+                  Room #{room.roomNumber}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
         <button type="submit" className="submit-btn">Submit Booking</button>
       </form>
     </div>
