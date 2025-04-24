@@ -2,26 +2,47 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './LoginPage.css';
 import loginImage from '../../assets/login.jpeg';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('user'); // default role
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const endpoint = role === 'admin'
-      ? 'http://localhost:5000/api/admin/login'
-      : 'http://localhost:5000/api/user/login';
-
     try {
-      const res = await axios.post(endpoint, { username, password });
-      console.log(res.data); // You can store the token or redirect here
-      alert(res.data.message);
-    } catch (err) {
-      console.error(err);
-      alert(err.response?.data?.message || 'Login failed');
+      // Try Admin Login First
+      const adminRes = await axios.post('http://localhost:5000/api/admin/login', {
+        username,
+        password
+      });
+
+      // If successful admin login:
+      localStorage.setItem('token', adminRes.data.token);
+      localStorage.setItem('role', 'admin');
+      alert('Login successful as Admin!');
+      navigate('/admin-dashboard'); // Redirect to admin page
+    } catch (adminErr) {
+      console.log("Admin login failed, trying staff login...");
+
+      try {
+        // Try Staff Login
+        const userRes = await axios.post('http://localhost:5000/api/user/login', {
+          username,
+          password
+        });
+
+        localStorage.setItem('token', userRes.data.token);
+        localStorage.setItem('role', 'staff');
+        alert('Login successful as Staff!');
+        navigate('/booking-details'); // Redirect to booking details page
+      } catch (userErr) {
+        // Both failed
+        console.error('Login failed');
+        alert('Login unsuccessful. Please check your credentials.');
+      }
     }
   };
 
@@ -34,13 +55,6 @@ const LoginPage = () => {
         <div className="login-card">
           <h2>Login</h2>
           <form onSubmit={handleLogin}>
-            <div className="input-group">
-              <label htmlFor="role">Select Role</label>
-              <select id="role" value={role} onChange={(e) => setRole(e.target.value)}>
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-              </select>
-            </div>
             <div className="input-group">
               <label htmlFor="username">Username</label>
               <input
