@@ -3,16 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './BookingPage.css';
 
-// const roomTypes = [
-//   { type: 'Standard', price: '$60' },
-//   { type: 'Classic', price: '$70' },
-//   { type: 'Duplex Room', price: '$80' },
-//   { type: 'Double Room', price: '$90' },
-//   { type: 'Queens Suite', price: '$110' },
-//   { type: 'Presidential Suite', price: '$150' },
-//   { type: 'Penthouse', price: '$200' },
-// ];
-
 const BookingPage = () => {
   const navigate = useNavigate();
   const [rooms, setRooms] = useState([]);
@@ -31,6 +21,7 @@ const BookingPage = () => {
     childrenAges: [],
   });
 
+  // Fetch rooms on load (useEffect)
   useEffect(() => {
     const fetchRooms = async () => {
       try {
@@ -47,8 +38,10 @@ const BookingPage = () => {
 
   const uniqueRoomTypes = [...new Set(rooms.map(room => room.roomType))];
 
+  // Filter rooms based on the selected room type and availability
   const filteredRooms = rooms.filter(room => room.roomType === selectedRoomType);
 
+  // Handle changes in form fields
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -68,6 +61,29 @@ const BookingPage = () => {
     const updatedAges = [...formData.childrenAges];
     updatedAges[index] = parseInt(value);
     setFormData((prev) => ({ ...prev, childrenAges: updatedAges }));
+  };
+
+  // Check room availability based on selected dates
+  const handleRoomTypeChange = async (e) => {
+    const roomType = e.target.value;
+    setSelectedRoomType(roomType);
+    setFormData((prev) => ({ ...prev, room: '' }));  // Reset selected room
+
+    if (formData.checkIn && formData.checkOut) {
+      // Fetch available rooms based on the selected room type and dates
+      try {
+        const response = await axios.get('http://localhost:5000/api/rooms/available', {
+          params: {
+            checkIn: formData.checkIn,
+            checkOut: formData.checkOut,
+            roomType: roomType,
+          },
+        });
+        setRooms(response.data.data);  // Update the rooms state with available rooms
+      } catch (error) {
+        console.error('❌ Error fetching available rooms:', error);
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -107,6 +123,7 @@ const BookingPage = () => {
     <div className="booking-container">
       <h2>Book Your Stay</h2>
       <form onSubmit={handleSubmit} className="booking-form">
+        {/* Form Fields */}
         <div className="form-row">
           <input
             type="text" name="firstName" placeholder="First Name" required
@@ -189,10 +206,7 @@ const BookingPage = () => {
           <select
             name="roomType"
             value={selectedRoomType}
-            onChange={(e) => {
-              setSelectedRoomType(e.target.value);
-              setFormData((prev) => ({ ...prev, room: '' }));
-            }}
+            onChange={handleRoomTypeChange}
             required
           >
             <option value="" disabled hidden>Select Room Type</option>
