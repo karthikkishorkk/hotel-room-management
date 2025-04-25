@@ -1,0 +1,49 @@
+.manage-users-container {
+    padding: 2rem;
+  }
+  
+  .manage-users-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .add-user-btn {
+    padding: 0.5rem 1rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .add-user-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-table th, .user-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .user-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .action-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .action-icon:hover {
+    opacity: 0.7;
+  }
+  
