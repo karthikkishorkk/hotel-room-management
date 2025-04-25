@@ -14,31 +14,30 @@
   color: black;
 }
 
-.navbar-center {
+.navbar-actions {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
-.navbar-links {
-  display: flex;
-  list-style: none;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-links li {
-  cursor: pointer;
+.nav-btn {
+  background: none;
+  border: 2px solid #ff3399;
+  color: #ff3399;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
   font-size: 1rem;
-  transition: color 0.3s ease;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.navbar-links li:hover {
-  color: #ff3399; /* Only applies to nav links */
+.nav-btn:hover {
+  background-color: #ff3399;
+  color: white;
 }
 
-.navbar .book-now-btn {
+.book-now-btn {
   padding: 0.5rem 1.2rem;
   background-color: #ff3399;
   color: white;
@@ -49,6 +48,6 @@
   transition: background-color 0.3s ease;
 }
 
-.navbar .book-now-btn:hover {
+.book-now-btn:hover {
   background-color: #e60073;
 }

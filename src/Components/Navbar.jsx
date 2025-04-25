@@ -9,18 +9,16 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-logo">Booking</div>
 
-      <div className="navbar-center">
-        <ul className="navbar-links">
-          <li>Home</li>
-          <li>Rooms</li>
-          <li>Booking</li>
-          <li>Occupancy</li>
-          <li onClick={() => navigate('/login')}>Login</li>
-        </ul>
+      <div className="navbar-actions">
+        <button className="nav-btn" onClick={() => navigate('/occupancy')}>
+          Occupancy
+        </button>
+        <button className="nav-btn" onClick={() => navigate('/login')}>
+          Login
+        </button>
         <button className="book-now-btn" onClick={() => navigate('/available-rooms')}>
           View Available Rooms
         </button>
-
       </div>
     </nav>
   );
