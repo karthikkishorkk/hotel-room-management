@@ -45,7 +45,7 @@ const AdminDashboard = () => {
         <h2>Admin Panel</h2>
         <ul>
           <li onClick={() => navigate('/admin/manage-rooms')}>Manage Rooms</li>
-          <li onClick={() => navigate('/admin/manage-staff')}>Manage Staff</li>
+          <li onClick={() => navigate('/admin/manage-users')}>Manage Staff</li>
           <li onClick={() => navigate('/admin/room-availability')}>Room Availability</li>
           <li onClick={() => navigate('/room-calendar')}>Room Calendar</li>
           <li className="logout" onClick={handleLogout}>Logout</li>
