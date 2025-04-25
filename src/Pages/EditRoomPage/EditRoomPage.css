@@ -1,0 +1,50 @@
+.edit-room-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .edit-room-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  .edit-room-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  .edit-room-form label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .edit-room-form input,
+  .edit-room-form select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .edit-room-form button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.3s;
+  }
+  
+  .edit-room-form button:hover {
+    background-color: #0056b3;
+  }
+  
