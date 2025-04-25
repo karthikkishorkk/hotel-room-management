@@ -9,6 +9,8 @@ import AdminDashboard from './Pages/AdminDashboard/AdminDashboard';
 import RoomCalendarPage from './Pages/RoomCalendarPage/RoomCalendarPage';
 import ManageRoomsPage from './Pages/ManageRoomsPage/ManageRoomsPage';
 import AddRoomPage from './Pages/AddRoomPage/AddRoomPage';
+import EditRoomPage from './Pages/EditRoomPage/EditRoomPage';
+import ManageUsersPage from './Pages/ManageUsersPage/ManageUsersPage';
 
 function App() {
   return (
@@ -23,6 +25,10 @@ function App() {
         <Route path="/room-calendar" element={<RoomCalendarPage />} />
         <Route path="/admin/manage-rooms" element={<ManageRoomsPage />} />
         <Route path="/admin/manage-rooms/add" element={<AddRoomPage />} />
+        <Route path="/admin/manage-rooms/edit/:id" element={<EditRoomPage />} />
+        <Route path="/admin/manage-users" element={<ManageUsersPage />} />
+        {/* <Route path="/admin/manage-users/add" element={<AddUserPage />} />
+        <Route path="/admin/manage-users/edit/:id" element={<EditUserPage />} /> */}
       </Routes>
     </Router>
   );
