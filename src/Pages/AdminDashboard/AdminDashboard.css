@@ -51,6 +51,7 @@
   flex-grow: 1;
   padding: 3rem;
   background-color: #f8f9fa;
+  overflow-y: auto;
 }
 
 .dashboard-content h1 {
@@ -95,3 +96,39 @@
 .green { background-color: #4caf50; }
 .blue { background-color: #2196f3; }
 .red { background-color: #f44336; }
+
+.dashboard-bookings-title {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.booking-table th,
+.booking-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px;
+}
+
+.booking-table th {
+  background-color: #f1f1f1;
+  font-weight: 600;
+  color: #333;
+}
+
+.booking-table tr:hover {
+  background-color: #f9f9f9;
+}

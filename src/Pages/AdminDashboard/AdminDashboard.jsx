@@ -11,8 +11,9 @@ const AdminDashboard = () => {
     bookedRooms: 0,
     maintenanceRooms: 0,
   });
-  const [loading, setLoading] = useState(true); // Added loading state
-  const [error, setError] = useState(''); // Added error state
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState('');
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -20,18 +21,22 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
-    const fetchStats = async () => {
+    const fetchStatsAndBookings = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/rooms/stats');
-        setStats(res.data);
-        setLoading(false); // Data fetched, set loading to false
+        const [statsRes, bookingsRes] = await Promise.all([
+          axios.get('http://localhost:5000/api/rooms/stats'),
+          axios.get('http://localhost:5000/api/bookings'),
+        ]);
+        setStats(statsRes.data);
+        setBookings(bookingsRes.data.data);
+        setLoading(false); 
       } catch (error) {
-        setLoading(false); // Data fetch failed, set loading to false
-        setError('Failed to fetch room stats');
-        console.error('Failed to fetch room stats:', error);
+        setLoading(false);
+        setError('Failed to fetch dashboard data');
+        console.error('Error:', error);
       }
     };
-    fetchStats();
+    fetchStatsAndBookings();
   }, []);
 
   return (
@@ -49,28 +54,56 @@ const AdminDashboard = () => {
 
       <main className="dashboard-content">
         {loading ? (
-          <div className="loading">Loading statistics...</div> // Loading state
+          <div className="loading">Loading dashboard...</div> 
         ) : error ? (
-          <div className="error-message">{error}</div> // Error state
+          <div className="error-message">{error}</div> 
         ) : (
-          <div className="tiles-grid">
-            <div className="tile orange">
-              <h3>Total Rooms</h3>
-              <p>{stats.totalRooms}</p>
+          <>
+            <div className="tiles-grid">
+              <div className="tile orange">
+                <h3>Total Rooms</h3>
+                <p>{stats.totalRooms}</p>
+              </div>
+              <div className="tile green">
+                <h3>Available Rooms</h3>
+                <p>{stats.availableRooms}</p>
+              </div>
+              <div className="tile blue">
+                <h3>Booked Rooms</h3>
+                <p>{stats.bookedRooms}</p>
+              </div>
+              <div className="tile red">
+                <h3>Under Maintenance</h3>
+                <p>{stats.maintenanceRooms}</p>
+              </div>
             </div>
-            <div className="tile green">
-              <h3>Available Rooms</h3>
-              <p>{stats.availableRooms}</p>
-            </div>
-            <div className="tile blue">
-              <h3>Occupied Rooms</h3>
-              <p>{stats.bookedRooms}</p>
-            </div>
-            <div className="tile red">
-              <h3>Under Maintenance</h3>
-              <p>{stats.maintenanceRooms}</p>
-            </div>
-          </div>
+
+            <h2 className="dashboard-bookings-title">Recent Bookings</h2>
+            <table className="booking-table">
+              <thead>
+                <tr>
+                  <th>Guest Last Name</th>
+                  <th>Guest First Name</th>
+                  <th>Room Type</th>
+                  <th>Check In</th>
+                  <th>Check Out</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {bookings.slice(0, 5).map((booking) => (
+                  <tr key={booking._id}>
+                    <td>{booking.lastName}</td>
+                    <td>{booking.firstName}</td>
+                    <td>{booking.room?.roomType || 'N/A'}</td>
+                    <td>{new Date(booking.checkIn).toLocaleDateString()}</td>
+                    <td>{new Date(booking.checkOut).toLocaleDateString()}</td>
+                    <td>{booking.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
         )}
       </main>
     </div>
