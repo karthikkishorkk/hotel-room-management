@@ -23,14 +23,14 @@ function App() {
         <Route path="/booking" element={<BookingPage />} />
         <Route path="/booking-details" element={<BookingDetailsPage />} />
         <Route path="/available-rooms" element={<AvailableRoomsPage />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
-        <Route path="/room-calendar" element={<RoomCalendarPage />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />        
         <Route path="/admin/manage-rooms" element={<ManageRoomsPage />} />
         <Route path="/admin/manage-rooms/add" element={<AddRoomPage />} />
         <Route path="/admin/manage-rooms/edit/:id" element={<EditRoomPage />} />
         <Route path="/admin/manage-users" element={<ManageUsersPage />} />
         <Route path="/admin/manage-users/add" element={<AddUserPage />} />
         <Route path="/admin/manage-users/edit/:id" element={<EditUserPage />} />
+        <Route path="/admin/manage-rooms/:roomId/calendar" element={<RoomCalendarPage />} />
       </Routes>
     </Router>
   );

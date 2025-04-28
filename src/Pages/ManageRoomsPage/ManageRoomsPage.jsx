@@ -4,6 +4,7 @@ import './ManageRoomsPage.css';
 import { useNavigate } from 'react-router-dom';
 import deleteIcon from '../../assets/delete.svg'; // Path to delete.svg
 import editIcon from '../../assets/edit.svg'; // Path to edit.svg
+import infoIcon from '../../assets/info.svg';
 
 const ManageRoomsPage = () => {
   const [rooms, setRooms] = useState([]);
@@ -39,6 +40,10 @@ const ManageRoomsPage = () => {
       console.error('Failed to delete room:', err);
       alert('Failed to delete room');
     }
+  };
+
+  const handleViewCalendar = (roomId) => {
+    navigate(`/room-calendar/${roomId}`); 
   };
 
   const handleAddRoom = () => {
@@ -79,6 +84,13 @@ const ManageRoomsPage = () => {
                   alt="Delete"
                   className="action-icon"
                   onClick={() => handleDelete(room._id)}
+                />
+                <img
+                  src={infoIcon}
+                  alt="Info"
+                  className="action-icon"
+                  // onClick={() => handleViewCalendar(room._id)} 
+                  onClick={() => navigate(`/admin/manage-rooms/${room._id}/calendar`)}
                 />
               </td>
             </tr>
