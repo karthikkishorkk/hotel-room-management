@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './ManageUsersPage.css';
+import './ManageUsersPage.css'; // create and style it similar to ManageRoomsPage.css
 import { useNavigate } from 'react-router-dom';
-import deleteIcon from '../../assets/delete.svg'; // Path to delete.svg
-import editIcon from '../../assets/edit.svg'; // Path to edit.svg
+import deleteIcon from '../../assets/delete.svg';
+import editIcon from '../../assets/edit.svg';
 
 const ManageUsersPage = () => {
   const [users, setUsers] = useState([]);
@@ -12,7 +12,7 @@ const ManageUsersPage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/users');
+        const res = await axios.get('http://localhost:5000/api/user');
         setUsers(res.data);
       } catch (err) {
         console.error('Failed to fetch users:', err);
@@ -23,7 +23,6 @@ const ManageUsersPage = () => {
   }, []);
 
   const handleEdit = (userId) => {
-    // Navigate to the Edit User page with the user ID
     navigate(`/admin/manage-users/edit/${userId}`);
   };
 
@@ -31,7 +30,7 @@ const ManageUsersPage = () => {
     try {
       const confirmDelete = window.confirm('Are you sure you want to delete this user?');
       if (confirmDelete) {
-        await axios.delete(`http://localhost:5000/api/users/${userId}`);
+        await axios.delete(`http://localhost:5000/api/user/${userId}`);
         setUsers(users.filter(user => user._id !== userId)); // Remove the deleted user from state
         alert('User deleted successfully');
       }
@@ -42,14 +41,13 @@ const ManageUsersPage = () => {
   };
 
   const handleAddUser = () => {
-    navigate('/admin/manage-users/add'); // Navigate to the Add User page
+    navigate('/admin/manage-users/add');
   };
 
   return (
     <div className="manage-users-container">
       <h2>Manage Users</h2>
-      
-      {/* Add User Button */}
+
       <button className="add-user-btn" onClick={handleAddUser}>Add User</button>
 
       <table className="user-table">
@@ -57,6 +55,7 @@ const ManageUsersPage = () => {
           <tr>
             <th>Username</th>
             <th>Email</th>
+            {/* Password field hidden here for safety reasons */}
             <th>Actions</th>
           </tr>
         </thead>
