@@ -24,7 +24,7 @@ const ManageUsersPage = () => {
 
   const handleEdit = (userId) => {
     navigate(`/admin/manage-users/edit/${userId}`);
-  };
+  };  
 
   const handleDelete = async (userId) => {
     try {
