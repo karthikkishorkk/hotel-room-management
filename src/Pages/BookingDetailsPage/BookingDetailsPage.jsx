@@ -98,7 +98,8 @@ const BookingDetailsPage = () => {
           <tr>
             <th>Guest Last Name</th>
             <th>Guest First Name</th>
-            <th>Room Type</th>
+            <th>Room No</th>
+            <th>Room Type</th>            
             <th>Check In Date</th>
             <th>Check Out Date</th>
             <th>Status</th>
@@ -109,7 +110,8 @@ const BookingDetailsPage = () => {
             <tr key={booking._id}>
               <td className="last-name">{booking.lastName}</td>
               <td>{booking.firstName}</td>
-              <td>{booking.room?.roomType || 'N/A'}</td>
+              <td>{booking.room?.roomNumber || 'N/A'}</td>
+              <td>{booking.room?.roomType || 'N/A'}</td>              
               <td>{new Date(booking.checkIn).toLocaleDateString()}</td>
               <td>{new Date(booking.checkOut).toLocaleDateString()}</td>
               <td>
