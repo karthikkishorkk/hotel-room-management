@@ -28,7 +28,12 @@ const AdminDashboard = () => {
           axios.get('http://localhost:5000/api/bookings'),
         ]);
         setStats(statsRes.data);
-        setBookings(bookingsRes.data.data);
+  
+        const sortedBookings = bookingsRes.data.data.sort(
+          (a, b) => new Date(b.checkIn) - new Date(a.checkIn)
+        );
+        setBookings(sortedBookings.slice(0, 5));
+  
         setLoading(false); 
       } catch (error) {
         setLoading(false);
@@ -38,6 +43,7 @@ const AdminDashboard = () => {
     };
     fetchStatsAndBookings();
   }, []);
+  
 
   return (
     <div className="admin-dashboard">
