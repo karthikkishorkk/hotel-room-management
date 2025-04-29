@@ -29,20 +29,27 @@ const RoomCalendarPage = () => {
   }, [roomId, selectedDate]); // Re-fetch data when roomId or selectedDate changes
 
   // Handle clicking on a date
-  const handleDateClick = (date) => {
-    const isoDate = date.toISOString().split('T')[0]; // Convert clicked date to YYYY-MM-DD format
-    if (availability[isoDate] === 'booked') {
-      // Find booking details for this clicked date
-      const details = bookings.filter(booking => {
-        const bookingStart = new Date(booking.startDate).toISOString().split("T")[0];
-        const bookingEnd = new Date(booking.endDate).toISOString().split("T")[0];
-        return bookingStart === isoDate || bookingEnd === isoDate;
-      });
+  // Handle clicking on a date
+const handleDateClick = (date) => {
+  const isoDate = date.toISOString().split('T')[0]; // Clicked date in YYYY-MM-DD format
 
-      // Set the booking details to display
-      setBookingDetails(details);
-    }
-  };
+  if (availability[isoDate] === 'booked') {
+    // Find booking details where the clicked date is BETWEEN startDate and endDate
+    const details = bookings.filter(booking => {
+      const bookingStart = new Date(booking.startDate);
+      const bookingEnd = new Date(booking.endDate);
+      const clicked = new Date(isoDate);
+
+      return clicked >= bookingStart && clicked <= bookingEnd;
+    });
+
+    setBookingDetails(details);
+  } else {
+    // If clicked date is not booked, clear bookingDetails
+    setBookingDetails(null);
+  }
+};
+
 
   // Generate the days of the month
   const generateCalendar = () => {
