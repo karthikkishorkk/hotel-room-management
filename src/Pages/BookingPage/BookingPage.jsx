@@ -112,7 +112,7 @@ const BookingPage = () => {
         setSelectedRoomType('');
 
         // Redirect to BookingDetailsPage
-        navigate('/booking-details');
+        navigate('/user/booking-details');
       }
     } catch (error) {
       console.error('❌ Error submitting booking:', error);

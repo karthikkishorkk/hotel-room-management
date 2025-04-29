@@ -13,24 +13,34 @@ import EditRoomPage from './Pages/EditRoomPage/EditRoomPage';
 import ManageUsersPage from './Pages/ManageUsersPage/ManageUsersPage';
 import AddUserPage from './Pages/AddUserPage/AddUserPage'; 
 import EditUserPage from './Pages/EditUserPage/EditUserPage'; 
+import UserRoutes from './Routes/UserRoutes';
+import AdminRoute from './Routes/AdminRoute';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/booking" element={<BookingPage />} />
-        <Route path="/booking-details" element={<BookingDetailsPage />} />
+        <Route path="/login" element={<LoginPage />} />        
         <Route path="/available-rooms" element={<AvailableRoomsPage />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />        
-        <Route path="/admin/manage-rooms" element={<ManageRoomsPage />} />
-        <Route path="/admin/manage-rooms/add" element={<AddRoomPage />} />
-        <Route path="/admin/manage-rooms/edit/:id" element={<EditRoomPage />} />
-        <Route path="/admin/manage-users" element={<ManageUsersPage />} />
-        <Route path="/admin/manage-users/add" element={<AddUserPage />} />
-        <Route path="/admin/manage-users/edit/:id" element={<EditUserPage />} />
-        <Route path="/admin/manage-rooms/:roomId/calendar" element={<RoomCalendarPage />} />
+
+        <Route path="/user" element={<UserRoutes />} >
+          <Route path="booking" element={<BookingPage />} />
+          <Route path="booking-details" element={<BookingDetailsPage />} />
+        </Route>
+
+
+        <Route path="/admin" element={<AdminRoute />} >
+          <Route path="admin-dashboard" element={<AdminDashboard />} />        
+          <Route path="manage-rooms" element={<ManageRoomsPage />} />
+          <Route path="manage-rooms/add" element={<AddRoomPage />} />
+          <Route path="manage-rooms/edit/:id" element={<EditRoomPage />} />
+          <Route path="manage-rooms/:roomId/calendar" element={<RoomCalendarPage />} />
+          <Route path="manage-users" element={<ManageUsersPage />} />
+          <Route path="manage-users/add" element={<AddUserPage />} />
+          <Route path="manage-users/edit/:id" element={<EditUserPage />} />
+        </Route>
+
       </Routes>
     </Router>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './LoginPage.css';
 import loginImage from '../../assets/login.jpeg';
@@ -8,6 +8,15 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    const role = localStorage.getItem("role")
+    if(role==="admin"){
+      navigate('/admin/admin-dashboard');
+    }else if(role==="user"){
+      navigate('/user/booking-details');
+    }
+  },[])
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,9 +30,9 @@ const LoginPage = () => {
 
       // If successful admin login:
       localStorage.setItem('token', adminRes.data.token);
-      localStorage.setItem('role', 'admin');
+      localStorage.setItem('role', adminRes.data.role);
       alert('Login successful as Admin!');
-      navigate('/admin-dashboard'); // Redirect to admin page
+      navigate('/admin/admin-dashboard'); // Redirect to admin page
     } catch (adminErr) {
       console.log("Admin login failed, trying staff login...");
 
@@ -35,9 +44,9 @@ const LoginPage = () => {
         });
 
         localStorage.setItem('token', userRes.data.token);
-        localStorage.setItem('role', 'staff');
+        localStorage.setItem('role', userRes.data.role);
         alert('Login successful as Staff!');
-        navigate('/booking-details'); // Redirect to booking details page
+        navigate('/user/booking-details'); // Redirect to booking details page
       } catch (userErr) {
         // Both failed
         console.error('Login failed');

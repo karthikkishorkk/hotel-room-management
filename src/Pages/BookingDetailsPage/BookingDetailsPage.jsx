@@ -23,11 +23,12 @@ const BookingDetailsPage = () => {
   }, []);
 
   const handleNewBooking = () => {
-    navigate('/booking');
+    navigate('/user/booking');
   };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     navigate('/login');
   };
 
