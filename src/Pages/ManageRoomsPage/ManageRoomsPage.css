@@ -8,20 +8,6 @@
     margin-bottom: 1rem;
   }
   
-  .add-room-btn {
-    margin-bottom: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  .add-room-btn:hover {
-    background-color: #45a049;
-  }
-  
   .rooms-table {
     width: 100%;
     border-collapse: collapse;
@@ -108,5 +94,35 @@
   
   .action-icon:first-child {
     margin-left: 0;
+  }
+
+  .room-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .add-room-btn {
+    padding: 0.5rem 1rem;
+    background-color: #45a049;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .add-room-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .room-type-filter {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
   }
   
