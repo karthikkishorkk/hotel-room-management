@@ -1,11 +1,14 @@
 .navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background-color: transparent; /* Transparent over hero */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: white;
-  z-index: 10;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 2rem;
 }
 
 .navbar-logo {
@@ -22,27 +25,30 @@
 
 .nav-btn {
   background: none;
-  border: 2px solid #ff3399;
-  color: #ff3399;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
+  border: none;
+  color:white;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: 500;
   font-size: 1rem;
+  padding: 0.4rem 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .nav-btn:hover {
-  background-color: #ff3399;
-  color: white;
+  color: #e60073;
+  background: none;
 }
+
 
 .book-now-btn {
   padding: 0.5rem 1.2rem;
   background-color: #ff3399;
+  /* width:400px; */
   color: white;
   border: none;
   border-radius: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;

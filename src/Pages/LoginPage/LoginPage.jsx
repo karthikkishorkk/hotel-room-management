@@ -12,7 +12,7 @@ const LoginPage = () => {
   useEffect(()=>{
     const role = localStorage.getItem("role")
     if(role==="admin"){
-      navigate('/admin/admin-dashboard');
+      navigate('/admin');
     }else if(role==="user"){
       navigate('/user/booking-details');
     }
@@ -31,8 +31,8 @@ const LoginPage = () => {
       // If successful admin login:
       localStorage.setItem('token', adminRes.data.token);
       localStorage.setItem('role', adminRes.data.role);
-      alert('Login successful as Admin!');
-      navigate('/admin/admin-dashboard'); // Redirect to admin page
+      // alert('Login successful as Admin!');
+      navigate('/admin'); // Redirect to admin page
     } catch (adminErr) {
       console.log("Admin login failed, trying staff login...");
 
@@ -45,7 +45,7 @@ const LoginPage = () => {
 
         localStorage.setItem('token', userRes.data.token);
         localStorage.setItem('role', userRes.data.role);
-        alert('Login successful as Staff!');
+        // alert('Login successful as Staff!');
         navigate('/user/booking-details'); // Redirect to booking details page
       } catch (userErr) {
         // Both failed
@@ -86,7 +86,7 @@ const LoginPage = () => {
                 required
               />
             </div>
-            <button type="submit">Login</button>
+            <button className="login-button" type="submit">Login</button>
           </form>
         </div>
       </div>

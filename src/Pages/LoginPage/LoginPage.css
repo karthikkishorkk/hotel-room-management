@@ -59,8 +59,8 @@
     font-size: 16px;
   }
   
-  button {
-    width: 100%;
+ .login-button, button {
+    /* width: 100%; */
     background-color: #e91e63;
     color: white;
     padding: 12px;
@@ -69,6 +69,9 @@
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+  }
+  .login-button{
+    width: 100%;
   }
   
   button:hover {
