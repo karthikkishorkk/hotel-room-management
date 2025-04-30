@@ -1,64 +1,94 @@
 .add-room-page {
-    max-width: 600px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .add-room-page h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-  }
-  
-  .add-room-page form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .add-room-page label {
-    display: flex;
-    flex-direction: column;
-    font-weight: 600;
-    color: #555;
-  }
-  
-  .add-room-page input,
-  .add-room-page select {
-    margin-top: 0.5rem;
-    padding: 0.75rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    background-color: #f9f9f9;
-    transition: border 0.3s ease;
-  }
-  
-  .add-room-page input:focus,
-  .add-room-page select:focus {
-    outline: none;
-    border-color: #007bff;
-    background-color: #fff;
-  }
-  
-  .add-room-page button {
-    padding: 0.75rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .add-room-page button:hover {
-    background-color: #0056b3;
-  }
-  
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-room-page h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.add-room-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.add-room-page label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.add-room-page input,
+.add-room-page select {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border 0.3s ease;
+  width: 100%;
+}
+
+.add-room-page input:focus,
+.add-room-page select:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #fff;
+}
+
+.add-room-page button {
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.add-room-page button:hover {
+  background-color: #0056b3;
+}
+
+.amenities-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.amenity-option {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.amenity-option input {
+  margin-right: 10px;
+}
+
+.add-room-page input[type="text"]:focus,
+.add-room-page input[type="number"]:focus {
+  border-color: #007bff;
+  background-color: #fff;
+}

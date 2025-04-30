@@ -1,18 +1,42 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AddRoomPage.css';
 
 const AddRoomPage = () => {
+  const navigate = useNavigate(); // Step 2
+
   const [roomData, setRoomData] = useState({
     roomNumber: '',
     roomType: '',
     status: 'available',
     capacity: 1,
-    amenities: '',
+    amenities: [],  // Store selected amenities as an array
   });
 
+  // Predefined amenities options
+  const amenitiesOptions = [
+    'WiFi', 'AC', 'TV', 'Minibar', 'Balcony', 'Pool', 'Gym', 'Parking', 'Breakfast'
+  ];
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setRoomData({ ...roomData, [name]: value });
+    const { name, value, checked } = e.target;
+
+    // Update amenities array when a checkbox is toggled
+    if (name === 'amenities') {
+      if (checked) {
+        setRoomData({
+          ...roomData,
+          amenities: [...roomData.amenities, value], // Add selected amenity
+        });
+      } else {
+        setRoomData({
+          ...roomData,
+          amenities: roomData.amenities.filter((amenity) => amenity !== value), // Remove unselected amenity
+        });
+      }
+    } else {
+      setRoomData({ ...roomData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -20,7 +44,6 @@ const AddRoomPage = () => {
 
     const payload = {
       ...roomData,
-      amenities: roomData.amenities.split(',').map(a => a.trim()),
     };
 
     try {
@@ -32,16 +55,22 @@ const AddRoomPage = () => {
 
       const data = await res.json();
       if (res.ok) {
-        alert('Room created successfully!');
+        alert('Room Created Successfully!');
         setRoomData({
           roomNumber: '',
           roomType: '',
           status: 'available',
           capacity: 1,
-          amenities: '',
+          amenities: [],  // Reset after submission
         });
+
+        navigate('/admin/manage-rooms'); // Step 3: Redirect
       } else {
-        alert(data.message || 'Error creating room');
+        if (data.message) {
+          alert(data.message);
+        } else {
+          alert('Error creating room');
+        }
       }
     } catch (err) {
       alert('Server error');
@@ -107,16 +136,21 @@ const AddRoomPage = () => {
           />
         </label>
 
-        <label>
-          Amenities (comma-separated)
-          <input
-            type="text"
-            name="amenities"
-            value={roomData.amenities}
-            onChange={handleChange}
-            placeholder="WiFi, AC, TV"
-          />
-        </label>
+        <label>Amenities</label>
+        <div className="amenities-checkboxes">
+          {amenitiesOptions.map((amenity, index) => (
+            <label key={index} className="amenity-option">
+              <input
+                type="checkbox"
+                name="amenities"
+                value={amenity}
+                checked={roomData.amenities.includes(amenity)} // Check if amenity is selected
+                onChange={handleChange}
+              />
+              {amenity}
+            </label>
+          ))}
+        </div>
 
         <button type="submit">Add Room</button>
       </form>
