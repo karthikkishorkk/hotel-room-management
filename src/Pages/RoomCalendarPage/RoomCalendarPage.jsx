@@ -105,43 +105,45 @@ const handleDateClick = (date) => {
   const calendarDays = generateCalendar();
 
   return (
-    <div className="room-calendar-container">
-      <h2 className="room-calendar-title">Room Availability Calendar</h2>
+    <div className="room-calendar-fullscreen">
+      <div className="room-calendar-container">
+        <h2 className="room-calendar-title">Room Availability Calendar</h2>
 
-      <div className="calendar-nav">
-        {/* Buttons for navigating between months */}
-        <button onClick={handlePrevMonth}>Previous Month</button>
-        <span>
-          {selectedDate.toLocaleString('default', { month: 'long' })} {selectedDate.getFullYear()}
-        </span>
-        <button onClick={handleNextMonth}>Next Month</button>
-      </div>
-
-      {/* Render the calendar */}
-      <div className="calendar">
-        <div className="calendar-grid">
-          {calendarDays.map((date, index) => {
-            if (date === null) {
-              return <div key={index} className="empty-cell"></div>; // Empty cell for days before the 1st of the month
-            }
-            return renderDay(date);
-          })}
+        <div className="calendar-nav">
+          {/* Buttons for navigating between months */}
+          <button onClick={handlePrevMonth}>Previous Month</button>
+          <span>
+            {selectedDate.toLocaleString('default', { month: 'long' })} {selectedDate.getFullYear()}
+          </span>
+          <button onClick={handleNextMonth}>Next Month</button>
         </div>
-      </div>
 
-      {/* Display booking details if available */}
-      {bookingDetails && (
-        <div className="booking-details">
-          <h3>Booking Details</h3>
-          {bookingDetails.map((booking, index) => (
-            <div key={index}>
-              <p><strong>Guest Name:</strong> {booking.guestName}</p>
-              <p><strong>Booking Start:</strong> {new Date(booking.startDate).toLocaleDateString()}</p>
-              <p><strong>Booking End:</strong> {new Date(booking.endDate).toLocaleDateString()}</p>
-            </div>
-          ))}
+        {/* Render the calendar */}
+        <div className="calendar">
+          <div className="calendar-grid">
+            {calendarDays.map((date, index) => {
+              if (date === null) {
+                return <div key={index} className="empty-cell"></div>; // Empty cell for days before the 1st of the month
+              }
+              return renderDay(date);
+            })}
+          </div>
         </div>
-      )}
+
+        {/* Display booking details if available */}
+        {bookingDetails && (
+          <div className="booking-details">
+            <h3>Booking Details</h3>
+            {bookingDetails.map((booking, index) => (
+              <div key={index}>
+                <p><strong>Guest Name:</strong> {booking.guestName}</p>
+                <p><strong>Booking Start:</strong> {new Date(booking.startDate).toLocaleDateString()}</p>
+                <p><strong>Booking End:</strong> {new Date(booking.endDate).toLocaleDateString()}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
