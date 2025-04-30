@@ -1,0 +1,135 @@
+.admin-dashboard {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #343a40;
+  color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sidebar h2 {
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.sidebar ul li:hover {
+  background-color: #495057;
+}
+
+.sidebar .logout {
+  margin-top: auto;
+  background-color: #dc3545;
+  text-align: center;
+}
+
+.sidebar .logout:hover {
+  background-color: #c82333;
+}
+
+.dashboard-content {
+  flex-grow: 1;
+  padding: 3rem;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+}
+
+.dashboard-content h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.dashboard-content p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tile {
+  background-color: #eee;
+  border-radius: 12px;
+  padding: 2rem;
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tile h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.tile p {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.orange { background-color: #ff9800; }
+.green { background-color: #4caf50; }
+.blue { background-color: #2196f3; }
+.red { background-color: #f44336; }
+
+.dashboard-bookings-title {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.booking-table th,
+.booking-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px;
+}
+
+.booking-table th {
+  background-color: #f1f1f1;
+  font-weight: 600;
+  color: #333;
+}
+
+.booking-table tr:hover {
+  background-color: #f9f9f9;
+}
+

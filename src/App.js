@@ -15,6 +15,7 @@ import AddUserPage from './Pages/AddUserPage/AddUserPage';
 import EditUserPage from './Pages/EditUserPage/EditUserPage'; 
 import UserRoutes from './Routes/UserRoutes';
 import AdminRoute from './Routes/AdminRoute';
+import AdminLayout from './Layout/AdminLayout';
 
 function App() {
   return (
@@ -31,12 +32,14 @@ function App() {
 
 
         <Route path="/admin" element={<AdminRoute />} >
-          <Route path="admin-dashboard" element={<AdminDashboard />} />        
-          <Route path="manage-rooms" element={<ManageRoomsPage />} />
+          <Route path='' element={<AdminLayout/>}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="manage-rooms" element={<ManageRoomsPage />} />
+            <Route path="manage-users" element={<ManageUsersPage />} />
+          </Route>
           <Route path="manage-rooms/add" element={<AddRoomPage />} />
           <Route path="manage-rooms/edit/:id" element={<EditRoomPage />} />
           <Route path="manage-rooms/:roomId/calendar" element={<RoomCalendarPage />} />
-          <Route path="manage-users" element={<ManageUsersPage />} />
           <Route path="manage-users/add" element={<AddUserPage />} />
           <Route path="manage-users/edit/:id" element={<EditUserPage />} />
         </Route>
