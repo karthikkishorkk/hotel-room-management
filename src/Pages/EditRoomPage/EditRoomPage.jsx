@@ -43,10 +43,18 @@ const EditRoomPage = () => {
   }, [id]);
 
   const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    const { name, value } = e.target;
+    setFormData((prev) => {
+      const newFormData = { ...prev, [name]: value };
+      
+      // Reset maintenance dates if status is not under_maintenance
+      if (name === 'status' && value !== 'under_maintenance') {
+        newFormData.maintenanceStartDate = '';
+        newFormData.maintenanceEndDate = '';
+      }
+
+      return newFormData;
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -60,6 +68,19 @@ const EditRoomPage = () => {
 
     // If the room status is 'under_maintenance', ensure the maintenance dates are included
     if (updatedRoom.status === 'under_maintenance') {
+      if (!updatedRoom.maintenanceStartDate || !updatedRoom.maintenanceEndDate) {
+        alert('Please provide both maintenance start and end dates.');
+        return;
+      }
+
+      const startDate = new Date(updatedRoom.maintenanceStartDate);
+      const endDate = new Date(updatedRoom.maintenanceEndDate);
+
+      if (startDate >= endDate) {
+        alert('Maintenance start date must be earlier than the end date.');
+        return;
+      }
+
       updatedRoom.maintenanceStartDate = formData.maintenanceStartDate;
       updatedRoom.maintenanceEndDate = formData.maintenanceEndDate;
     }
@@ -91,7 +112,7 @@ const EditRoomPage = () => {
         <select name="status" value={formData.status} onChange={handleChange} required>
           <option value="">Select</option>
           <option value="available">Available</option>
-          <option value="booked">Booked</option>
+          {/* <option value="booked">Booked</option> */}
           <option value="under_maintenance">Under Maintenance</option>
         </select>
 
