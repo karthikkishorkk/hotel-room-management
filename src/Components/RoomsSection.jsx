@@ -83,7 +83,6 @@ const RoomsSection = () => {
               <h3>{room.type}</h3>
               <p>{room.description}</p>
               <p><strong>Starting from {room.price}/night</strong></p>
-              <button>Book Now</button>
             </div>
           ))}
         </div>

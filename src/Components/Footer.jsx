@@ -20,7 +20,7 @@ const Footer = () => {
         <h4>Contact Us</h4>
         <p>Email: support@booking.com</p>
         <p>Phone: +91 80023 45678</p>
-        <p>Location: 123 Beachside Avenue NYC</p>
+        <p>Location: 123 Beachside Avenue Mumbai</p>
       </div>
     </footer>
   );

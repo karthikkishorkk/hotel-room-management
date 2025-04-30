@@ -10,9 +10,6 @@ const Navbar = () => {
       <div className="navbar-logo">Booking</div>
 
       <div className="navbar-actions">
-        <button className="nav-btn" onClick={() => navigate('/occupancy')}>
-          Occupancy
-        </button>
         <button className="nav-btn" onClick={() => navigate('/login')}>
           Login
         </button>
