@@ -44,7 +44,7 @@ const AdminLayout = () => {
         <li onClick={()=>{navigate("/admin")}} >Dashboard</li>
           <li onClick={()=>{navigate("/admin/manage-rooms")}} >Manage Rooms</li>
           <li onClick={()=>{navigate("/admin/manage-users")}}>Manage Staff</li>
-          <li onClick={()=>{navigate("available-rooms")}}>Room Availability</li>
+          {/* <li onClick={()=>{navigate("available-rooms")}}>Room Availability</li> */}
           <li className="logout" onClick={handleLogout}>Logout</li>
         </ul>
       </aside>
