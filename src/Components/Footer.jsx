@@ -18,9 +18,9 @@ const Footer = () => {
 
       <div className="footer-section-three">
         <h4>Contact Us</h4>
-        <p>Email: support@booking.com</p>
-        <p>Phone: +91 80023 45678</p>
-        <p>Location: 123 Beachside Avenue Mumbai</p>
+        <p>Email: support@kksbooking.com</p>
+        <p>Phone: +91 800XX XX678</p>
+        <p>Location: 123 Beachside Avenue Kochi</p>
       </div>
     </footer>
   );

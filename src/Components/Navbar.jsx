@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">Booking</div>
+      <div className="navbar-logo">BookingDesk</div>
 
       <div className="navbar-actions">
         <button className="nav-btn" onClick={() => navigate('/login')}>
